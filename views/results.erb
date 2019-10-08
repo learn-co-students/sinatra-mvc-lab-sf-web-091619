@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>PGR</title>
+  </head>
+  <body>
+    <h1>Pig Latinizer! Results</h1>
+
+    <%= @text %>
+
+    <%=@analyzed_text.piglatinize(params[:user_phrase])%>
+  </body>
+</html>
