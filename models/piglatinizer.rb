@@ -18,7 +18,5 @@ class PigLatinizer
         "#{rest}#{consonants}ay"
       end
     end.join(' ')
-
   end
-
 end
