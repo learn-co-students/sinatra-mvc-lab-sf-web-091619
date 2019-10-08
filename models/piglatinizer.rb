@@ -7,33 +7,37 @@ class PigLatinizer
        
     end
 
-    # def piglatinize
-    #     vowels = ["a", "e", "i", "o", "u"]
-    #     new_word = ""
-    #     word_arr = @words.downcase.split
-    #     word_arr.each do |word|
-    #         cars = word.chars
-    #         if vowels.include?(cars[0]) 
-    #             new_word += cars.join("") + "way"
-    #         else    
-                
-
-                    
-    # end
+    # def piglatinize(text)
+    #     words = text.split
+    
+    #     words.map do |word|
+    #       if word =~ /^[aeiou]/i 
+    #        "#{word}way"
+    #       else
+    #         next_vow = word =~ /[aeiou]/i 
+    #         consonants = word.slice(0...next_vow)
+    #         rest = word.slice(next_vow..-1)
+    #         "#{rest}#{consonants}ay"
+    #       end
+    #     end.join(' ')
+    #   end
 
     def piglatinize(text)
-        words = text.split
-    
-        words.map do |word|
-          if word =~ /^[aeiou]/i 
-           "#{word}way"
-          else
-            next_vow = word =~ /[aeiou]/i 
-            consonants = word.slice(0...next_vow)
-            rest = word.slice(next_vow..-1)
-            "#{rest}#{consonants}ay"
+      vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+      words = text.split
+      words.map do |word|
+        if vowels.include?(word[0])
+          word + "way"
+        else
+          i = 0
+          consonants = ""
+          until vowels.include?(word[i])
+            consonants += word[i]
+            i += 1
           end
-        end.join(' ')
-      end
+          word.slice(i..-1) + consonants + "ay"
+        end
+      end.join(" ")
+    end
 
 end
